@@ -1,6 +1,7 @@
 package com.example.alex.relogbipbip;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import java.text.SimpleDateFormat;
 
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView hora;
     private TextView fecha;
     private TextView planificado;
+    private CheckBox cb;
     private MediaPlayer mp1;
     private MediaPlayer mp2;
 
@@ -32,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -54,6 +58,9 @@ public class MainActivity extends AppCompatActivity {
         planificado = (TextView) findViewById(R.id.planificacion);
         pruebame = (Button) findViewById(R.id.bProbarBip);
         configurame = (Button) findViewById(R.id.bconfigura);
+        cb = (CheckBox) findViewById(R.id.tocando);
+
+        cb.setClickable(false);
 
         pruebame.setOnClickListener(new View.OnClickListener() {
 
@@ -109,19 +116,22 @@ public class MainActivity extends AppCompatActivity {
 
                                 if (tocar)
                                 {
-                                    if((h1 == hhh && m1 <= mmm) || (h1 < hhh))
-                                    {
-                                        if((h2 > hhh) || (h2 == hhh && m2 > mmm)) //Si h2> hhh tengo que parar si o si
-                                            if(sss == 0) {
-                                                if(mmm == 15 || mmm == 30 || mmm == 45) {
-                                                    mp2.start();
+                                    //if(h1 <  h2) {
+                                        if ((h1 < hhh) || (h1 == hhh && m1 <= mmm)) {
+                                            if ((h2 > hhh) || (h2 == hhh && m2 > mmm)) { //Si h2> hhh tengo que parar si o si
+                                                cb.setChecked(true);
+                                                if (sss == 0) {
+                                                    if (mmm == 15 || mmm == 30 || mmm == 45) {
+                                                        mp2.start();
+                                                    }
+                                                    if (mmm == 0) {
+                                                        mp1.start();
+                                                    }
                                                 }
-                                                if(mmm == 0)
-                                                {
-                                                    mp1.start();
-                                                }
-                                            }
-                                    }
+                                            } else
+                                                cb.setChecked(false);
+                                        }
+
                                 }
 
                                 //Para mostrar la hora actual
@@ -150,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
             h2 = data.getIntExtra("t2h", -1);
             m2 = data.getIntExtra("t2m", -1);
 
-            if (h1 > 0 && h2 > 0 && m1 > 0 && m2 > 0)
+            if (h1 > -1 && h2 > -1 && m1 > -1 && m2 > -1)
             {
                 if(h1<10)
                 {
@@ -184,6 +194,7 @@ public class MainActivity extends AppCompatActivity {
                 && resultCode == RESULT_CANCELED )
         {
             if (!tocar)
+                cb.setChecked(false);
                 planificado.setText(getResources().getString(R.string.noPlan));
         }
     }
@@ -201,6 +212,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (id == R.id.dejar) {
             tocar = false;
+            cb.setChecked(false);
             planificado.setText(getResources().getString(R.string.noPlan));
             return true;
         }

@@ -4,22 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/reloj"
     tools:context="com.example.alex.relogbipbip.MainActivity">
 
     <LinearLayout
         android:layout_width="378dp"
         android:layout_height="493dp"
+        android:background="@drawable/reloj"
         android:orientation="vertical"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="-2dp"
-        android:weightSum="1">
+        android:weightSum="1"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center_horizontal"
+            android:shadowDx="3"
+            android:shadowDy="2"
+            android:shadowRadius="1.8"
+            android:text="@string/hola"
+            android:textAlignment="gravity"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
             android:text="@string/bipname"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@android:color/holo_red_dark"
             android:textSize="18sp" />
 
         <Space
@@ -30,7 +47,8 @@
         <Button
             android:id="@+id/bProbarBip"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="17dp"
+            android:background="@android:color/holo_green_light"
             android:text="@string/probar" />
 
         <Space
@@ -58,28 +76,27 @@
             android:id="@+id/fechaActual"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="0.08"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="18sp"
             android:textStyle="italic" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.30" />
+
         <Button
             android:id="@+id/bconfigura"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="0.04"
             android:text="@string/configuracion" />
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.17" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/ic_lock_idle_alarm"
-            android:layout_weight="0.14" />
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/planificacion"
@@ -88,6 +105,19 @@
             android:textAlignment="textStart"
             android:textSize="14sp"
             android:textStyle="italic" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.08" />
+
+        <CheckBox
+            android:id="@+id/tocando"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:checked="false"
+            android:text="@string/tocando" />
 
     </LinearLayout>
 

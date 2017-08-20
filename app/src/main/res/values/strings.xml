@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">RelogBipBip</string>
-    <string name="bipname">Hola, me llamo Bip Bip.\nSoy un reloj que hace <k>bip bip</k> cuando me lo dices.</string>
+    <string name="hola">\nHola, me llamo Bip Bip.\n</string>
+    <string name="bipname">Soy un reloj que hace <k>bip bip</k> cuando me lo dices. Sólo configúrame!</string>
     <string name="probar">Probar el "BIP"</string>
     <string name="con">Con fecha:</string>
     <string name="configura">Configurar la hora para el "BIP"</string>
@@ -9,8 +10,10 @@
     <string name="hasta">hasta:</string>
     <string name="formato">En formato 24h -> HH:MM</string>
     <string name="configuracion">Configuración</string>
+    <string name="limpiar">Borrar alarma</string>
     <string name="cancelar">Cancelar</string>
     <string name="siguiente">Siguiente</string>
     <string name="hecho">Hecho</string>
     <string name="noPlan">No hay nada planificado.</string>
+    <string name="tocando">Tocando.</string>
 </resources>
